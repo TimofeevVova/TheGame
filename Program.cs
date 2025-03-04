@@ -49,12 +49,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 
-/*
-// Маршрут по умолчанию (корневой путь ведёт на страницу логина)
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=auth}/{action=login}");
-*/
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

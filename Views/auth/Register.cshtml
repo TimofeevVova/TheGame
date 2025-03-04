@@ -22,25 +22,6 @@
 </div>
 
 <script>
-    /*
-    document.getElementById("registerForm").addEventListener("click", function (e) {
-        // Отправка данных на сервер
-        $.ajax({
-            url: "/auth/Register",
-            type: "POST",
-            async: false,
-            data: {
-                email: $("#Email").val(),
-                password: $("#password").val(),
-                confirmPassword: $("#confirmPassword").val(),            
-            }
-            
-        });
-
-        window.location.href = "/Home/Index";
-
-    });
-    */
 
     document.getElementById("registerForm").addEventListener("submit", async (event) => {
         event.preventDefault(); // Предотвращаем стандартную отправку формы

@@ -26,30 +26,6 @@
 </div>
 
 <script>
-    //freeLogin - Вход без регистрации (автогенерация прилагательного и существительного типа Мощный волк, Игристый харек и т.д.)
-    // Предотвращаем отправку формы
-    /*
-    // Обработчик для кнопки "Вход без регистрации"
-    document.getElementById("freeLogin").addEventListener("click", async () => {
-        try {
-            const response = await fetch("/auth/temp-login", {
-                method: "POST"
-            });
-            if (response.ok) {
-                const data = await response.json();
-                console.log("Вход выполнен:", data.username);
-
-                // Перенаправляем на главную страницу
-                window.location.href = "Home/Index";
-            } else {
-                console.error("Ошибка входа:", response.status);
-            }
-        } catch (error) {
-            console.error("Ошибка:", error);
-        }
-    });
-    */
-
     // Обработчик для кнопки "Вход"
         document.getElementById("loginForm").addEventListener("submit", async (event) => {
         event.preventDefault(); // Предотвращаем стандартную отправку формы
