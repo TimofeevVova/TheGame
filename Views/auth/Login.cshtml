@@ -1,0 +1,74 @@
+﻿<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="p-4 border rounded shadow" style="max-width: 500px; width: 100%; min-height: 400px;">
+        <div class="mb-3 d-flex flex-column align-items-center">
+            <label class="form-label fs-2">АВТОРИЗАЦИЯ</label>
+        </div>
+        <form id="loginForm">
+            <div class="mb-3">
+                <label for="labelEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" required>
+            </div>
+            <div class="mb-3">
+                <label for="labelPassword" class="form-label">Пароль</label>
+                <input type="password" class="form-control" id="password" required>
+                <a href="#" class="link-secondary text-decoration-underline" id="passwordRecovery">Восстановление пароля</a>
+            </div>
+            <div class="mb-5">
+                <button id="tryToLogin" type="submit" class="btn btn-primary me-2">Вход</button>
+                <label class="form-label">Нет аккаунта?</label>
+                <a class="link-secondary text-decoration-underline" id="loginLink" asp-area="" asp-controller="auth" asp-action="Register">Регистрация</a>
+            </div>
+        </form>
+        <div class="d-flex flex-column align-items-center">
+            <button id="freeLogin" type="button" class="btn btn-primary">Вход без регистрации</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    //freeLogin - Вход без регистрации (автогенерация прилагательного и существительного типа Мощный волк, Игристый харек и т.д.)
+    // Предотвращаем отправку формы
+    /*
+    // Обработчик для кнопки "Вход без регистрации"
+    document.getElementById("freeLogin").addEventListener("click", async () => {
+        try {
+            const response = await fetch("/auth/temp-login", {
+                method: "POST"
+            });
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Вход выполнен:", data.username);
+
+                // Перенаправляем на главную страницу
+                window.location.href = "Home/Index";
+            } else {
+                console.error("Ошибка входа:", response.status);
+            }
+        } catch (error) {
+            console.error("Ошибка:", error);
+        }
+    });
+    */
+
+    // Обработчик для кнопки "Вход"
+        document.getElementById("loginForm").addEventListener("submit", async (event) => {
+        event.preventDefault(); // Предотвращаем стандартную отправку формы
+
+        console.log("Email - " +  $("#Email").val());
+        console.log("password - " +  $("#password").val());
+
+            // Отправка данных на сервер
+                $.ajax({
+                url: "/auth/login",
+                type: "POST",
+                async: false,
+                data: {
+                    email: $("#Email").val(),
+                    password: $("#password").val(),
+                    }
+                });
+        
+            window.location.href = "/Home/Index"; // Перенаправление
+
+        });
+</script>

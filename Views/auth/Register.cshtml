@@ -1,0 +1,66 @@
+﻿<div class="container d-flex justify-content-center align-items-center vh-100">
+    <form id="registerForm" class="p-4 border rounded shadow" style="max-width: 500px; width: 100%; min-height: 400px;">
+        <div class="mb-2 d-flex flex-column align-items-center">
+            <label class="form-label fs-2 ">Регистрация</label>
+        </div>
+        <div class="mb-1">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="Email" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-5">
+            <label for="exampleInputPassword1" class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="password">
+            <label for="exampleInputPassword1" class="form-label">Повторите пароль</label>
+            <input type="password" class="form-control" id="confirmPassword">
+            <label class="form-label">Уже зарегистрировались?</label>
+            <a class="link-secondary text-decoration-underline" id="loginLink" asp-area="" asp-controller="auth" asp-action="Login">Login</a>
+        </div>
+        <div class="d-flex flex-column align-items-center">
+            <button id="register" type="submit" class="btn btn-primary me-2">Регистрация</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    /*
+    document.getElementById("registerForm").addEventListener("click", function (e) {
+        // Отправка данных на сервер
+        $.ajax({
+            url: "/auth/Register",
+            type: "POST",
+            async: false,
+            data: {
+                email: $("#Email").val(),
+                password: $("#password").val(),
+                confirmPassword: $("#confirmPassword").val(),            
+            }
+            
+        });
+
+        window.location.href = "/Home/Index";
+
+    });
+    */
+
+    document.getElementById("registerForm").addEventListener("submit", async (event) => {
+        event.preventDefault(); // Предотвращаем стандартную отправку формы
+
+            // Отправка данных на сервер
+                $.ajax({
+                url: "/auth/Register",
+                type: "POST",
+                async: false,
+                data: {
+                    email: $("#Email").val(),
+                    password: $("#password").val(),
+                    confirmPassword: $("#confirmPassword").val(),
+                    }
+                });
+
+            window.location.href = "/Home/Index"; // Перенаправление
+
+        });
+</script>
+
+
+
